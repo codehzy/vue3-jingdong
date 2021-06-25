@@ -1,4 +1,12 @@
 <template>
+  <div class="wrapper">
+    <div class="position">
+      <span class="iconfont position__icon">&#xe64f;</span>
+      北京理工大学国防科技苑2号楼10层
+      <span class="iconfont position__notice">&#xe6bb;</span>
+    </div>
+  </div>
+
   <div class="docker">
     <span class="docker__item docker__item--active">
       <div class="iconfont">&#xe60b;</div>
@@ -20,5 +28,7 @@
 </template>
 
 <style lang="scss">
+@import "./style/viriables.scss";
+@import "./style/mixins.scss";
 @import "./index.scss";
 </style>
