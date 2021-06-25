@@ -22,7 +22,81 @@
         alt="banner"
       />
     </div>
-    <div>123</div>
+
+    <div class="icons">
+      <div class="icons__item">
+        <img
+          class="icons__item__img"
+          src="http://www.dell-lee.com/imgs/vue3/超市.png"
+        />
+        <p class="icons__item__desc">超市便利</p>
+      </div>
+      <div class="icons__item">
+        <img
+          class="icons__item__img"
+          src="http://www.dell-lee.com/imgs/vue3/菜市场.png"
+        />
+        <p class="icons__item__desc">菜市场</p>
+      </div>
+      <div class="icons__item">
+        <img
+          class="icons__item__img"
+          src="http://www.dell-lee.com/imgs/vue3/超市.png"
+        />
+        <p class="icons__item__desc">超市便利</p>
+      </div>
+      <div class="icons__item">
+        <img
+          class="icons__item__img"
+          src="http://www.dell-lee.com/imgs/vue3/超市.png"
+        />
+        <p class="icons__item__desc">超市便利</p>
+      </div>
+      <div class="icons__item">
+        <img
+          class="icons__item__img"
+          src="http://www.dell-lee.com/imgs/vue3/超市.png"
+        />
+        <p class="icons__item__desc">超市便利</p>
+      </div>
+      <div class="icons__item">
+        <img
+          class="icons__item__img"
+          src="http://www.dell-lee.com/imgs/vue3/超市.png"
+        />
+        <p class="icons__item__desc">超市便利</p>
+      </div>
+      <div class="icons__item">
+        <img
+          class="icons__item__img"
+          src="http://www.dell-lee.com/imgs/vue3/超市.png"
+        />
+        <p class="icons__item__desc">超市便利</p>
+      </div>
+      <div class="icons__item">
+        <img
+          class="icons__item__img"
+          src="http://www.dell-lee.com/imgs/vue3/超市.png"
+        />
+        <p class="icons__item__desc">超市便利</p>
+      </div>
+      <div class="icons__item">
+        <img
+          class="icons__item__img"
+          src="http://www.dell-lee.com/imgs/vue3/超市.png"
+        />
+        <p class="icons__item__desc">超市便利</p>
+      </div>
+      <div class="icons__item">
+        <img
+          class="icons__item__img"
+          src="http://www.dell-lee.com/imgs/vue3/超市.png"
+        />
+        <p class="icons__item__desc">超市便利</p>
+      </div>
+    </div>
+
+    <div class="gap"></div>
   </div>
 
   <!-- 首页底部导航 -->
