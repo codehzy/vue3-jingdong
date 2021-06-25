@@ -30,12 +30,13 @@
 
 // 首页顶部定位区域及搜索框
 .wrapper{
+    overflow-y: auto;
     position: absolute;
     left: 0;
     top: 0;
     bottom: .5rem;
     right: 0;
-    padding: 0 .18rem;
+    padding: 0 .18rem .2rem .18rem;
     & .position{
         @include ellipsis;
         position: relative;
@@ -113,8 +114,49 @@
     }
 }
 
+// 灰色分隔符
 .gap{
     height: .1rem;
     background-color: $content-bgColor;
     margin: 0 -.18rem;
+}
+
+.nearby{
+    &__title{
+        margin: .16rem 0 .02rem 0;
+        font-size: .18rem;
+        font-weight: normal;
+        color: $content-fontcolor;
+    }
+    &__item{
+        display: flex;
+        padding-top: .12rem;
+        &__img{
+            margin-right: .16rem;
+            width: .56rem;
+            height: .56rem;
+        }
+    }
+    &__content{
+        flex: 1;
+        border-bottom: 1px solid $content-bgColor;
+        padding-top: .12rem 0;
+        &__title{
+            line-height: .22rem;
+            font-size: .16rem;
+            color: $content-fontcolor;
+        }
+        &__tags{
+            margin-top: .08rem;
+            line-height: .18rem;
+            font-size: .13rem;
+            color: $content-fontcolor;
+        }
+        &__tag{
+            margin-right: .16rem;
+        }
+        &__highlight{
+            color: #E93B3B ;
+        }
+    }
 }
