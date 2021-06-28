@@ -1,16 +1,19 @@
 <template>
-  <Home />
+  <!-- <Home /> -->
+  <!-- <Login></Login> -->
+  <router-view></router-view>
 </template>
 
 <script>
-import Home from "./views/home/Home";
+// import Home from "./components/Home";
+// import Login from "./components/login/index.vue";
 
 export default {
   name: "App",
   components: {
-    Home,
+    // Login,
   },
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped></style>

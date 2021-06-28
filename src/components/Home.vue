@@ -7,9 +7,9 @@
 </template>
 
 <script lang="ts">
-import Nearby from "./Nearby.vue";
-import Docker from "./Docker.vue";
-import StaticPart from "./StaticPart.vue";
+import Nearby from "../views/home/nearby/index.vue";
+import Docker from "../views/home/docker/index.vue";
+import StaticPart from "../views/home/StaticPart/index.vue";
 
 export default {
   name: "Home",

@@ -94,87 +94,13 @@
   <div class="gap"></div>
 </template>
 
-<script>
-export default {
-  name: "StaticPart",
-};
+<script lang="ts">
+import { defineComponent } from "vue";
+export default defineComponent({
+  name: "Nearby",
+});
 </script>
 
-<style lang="scss">
-@import "../../style/viriables.scss";
-@import "../../style/mixins.scss";
-.position {
-  position: relative;
-  padding: 0.16rem 0.24rem 0.16rem 0;
-  line-height: 0.22rem;
-  font-size: 0.16rem;
-  @include ellipsis;
-  .position__icon {
-    position: relative;
-    top: 0.01rem;
-    font-size: 0.2rem;
-  }
-  .position_notice {
-    position: absolute;
-    right: 0;
-    top: 0.17rem;
-    font-size: 0.2rem;
-  }
-  color: $content-fontcolor;
-}
-.search {
-  margin-bottom: 0.12rem;
-  line-height: 0.32rem;
-  background: #f5f5f5;
-  color: #b7b7b7;
-  border-radius: 0.16rem;
-  .iconfont {
-    display: inline-block;
-    padding: 0 0.08rem 0 0.16rem;
-    font-size: 0.16rem;
-  }
-  &__text {
-    display: inline-block;
-    padding: 0.05rem 0;
-    font-size: 0.14rem;
-    width: 2.6rem;
-    border: 0px;
-    background-color: #f5f5f5;
-    &:focus {
-      background-color: white;
-    }
-  }
-}
-.banner {
-  height: 0;
-  overflow: hidden;
-  padding-bottom: 25.4%;
-  &__img {
-    width: 100%;
-  }
-}
-.icons {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 0.16rem;
-  &__item {
-    width: 20%;
-    &__img {
-      display: block;
-      width: 0.4rem;
-      height: 0.4rem;
-      margin: 0 auto;
-    }
-    &__desc {
-      margin: 0.06rem 0 0.16rem 0;
-      text-align: center;
-      color: $content-fontcolor;
-    }
-  }
-}
-.gap {
-  margin: 0 -0.18rem;
-  height: 0.1rem;
-  background: $content-bgColor;
-}
+<style lang="scss" scoped>
+@import "./index.scss";
 </style>
