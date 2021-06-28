@@ -10,7 +10,7 @@
         type="text"
         class="wrapper__input__content"
         placeholder="请输入用户名"
-        v-model="data.username"
+        v-model="username"
       />
     </div>
     <div class="wrapper__input">
@@ -18,20 +18,64 @@
         type="password"
         class="wrapper__input__content"
         placeholder="请输入密码"
-        v-model="data.password"
+        v-model="password"
+        aria-autocomplete="new-password"
       />
     </div>
     <div class="wrapper__login-button" @click="handleLogin">登陆</div>
     <div class="wrapper__login-link" @click="handleRegisterClick">立即注册</div>
-    <Toast v-if="toastData.showToast" :message="toastData.toastMessage"></Toast>
+    <Toast v-if="show" :message="toastMessage"></Toast>
   </div>
 </template>
 <script>
 import { useRouter } from "vue-router";
-import { defineComponent, reactive } from "vue";
+import { defineComponent, reactive, toRefs } from "vue";
 import Post from "../../utils/request";
 import Toast, { useToastEffect } from "../../components/Toast.vue";
 // import useToastEffect  from '../../components/Toast'
+
+const useLoginEffect = (showToast) => {
+  // Login调到Home
+  const router = useRouter();
+  const data = reactive({ username: "", password: "" });
+  const handleLogin = async () => {
+    // 验证用户输入
+    if (data.username === "" || data.password === "") {
+      showToast("请输入用户名和密码");
+      return;
+    }
+
+    try {
+      const result = await Post("/user/login", {
+        username: data.username,
+        password: data.password,
+      });
+      if (result?.errno === 0) {
+        localStorage.isLogin = true;
+        await router.push({ name: "Home" });
+      } else {
+        showToast("登录失败");
+      }
+    } catch (e) {
+      showToast("请求失败");
+    }
+  };
+  const { username, password } = toRefs(data);
+  return {
+    username,
+    password,
+    handleLogin,
+  };
+};
+
+const useRegisterEffect = () => {
+  const router = useRouter();
+  // 跳转到注册页面
+  const handleRegisterClick = () => {
+    router.push({ name: "Register" });
+  };
+  return { handleRegisterClick };
+};
 
 export default defineComponent({
   name: "Login",
@@ -39,38 +83,17 @@ export default defineComponent({
     Toast,
   },
   setup: () => {
-    const router = useRouter();
-    const data = reactive({ username: "", password: "" });
-    const { toastData, showToast } = useToastEffect();
-
-    // Login调到Home
-    const handleLogin = async () => {
-      try {
-        const result = await Post("api/user/login", {
-          username: data.username,
-          password: data.password,
-        });
-        if (result?.errno === 0) {
-          localStorage.isLogin = true;
-          await router.push({ name: "Home" });
-        } else {
-          showToast("登录失败");
-        }
-      } catch (e) {
-        showToast("请求失败");
-      }
-    };
-
-    // 跳转到注册页面
-    const handleRegisterClick = () => {
-      router.push({ name: "Register" });
-    };
+    const { show, toastMessage, showToast } = useToastEffect();
+    const { username, password, handleLogin } = useLoginEffect(showToast);
+    const { handleRegisterClick } = useRegisterEffect(showToast);
 
     return {
       handleLogin,
       handleRegisterClick,
-      data,
-      toastData,
+      username,
+      password,
+      show,
+      toastMessage,
     };
   },
 });
