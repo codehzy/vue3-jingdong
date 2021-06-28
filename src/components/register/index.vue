@@ -19,31 +19,31 @@
         placeholder="请输入密码"
       />
     </div>
-    <div class="wrapper__login-button" @click="handleLogin">登陆</div>
-    <div class="wrapper__login-link" @click="handleRegisterClick">立即注册</div>
+    <div class="wrapper__input">
+      <input
+        type="password"
+        class="wrapper__input__content"
+        placeholder="确认密码"
+      />
+    </div>
+    <div class="wrapper__register-button">注册</div>
+    <div class="wrapper__register-link" @click="handleLoginClick">
+      已有账号去登陆
+    </div>
   </div>
 </template>
 <script lang="ts">
 import { useRouter } from "vue-router";
 import { defineComponent } from "vue";
 export default defineComponent({
-  name: "Login",
+  name: "Register",
   setup: () => {
     const router = useRouter();
-    // Login调到Home
-    const handleLogin = () => {
-      router.push({ name: "Home" });
-      localStorage.isLogin = true;
+    const handleLoginClick = () => {
+      router.push({ name: "Login" });
     };
-
-    // 跳转到注册页面
-    const handleRegisterClick = () => {
-      router.push({ name: "Register" });
-    };
-
     return {
-      handleLogin,
-      handleRegisterClick,
+      handleLoginClick,
     };
   },
 });
