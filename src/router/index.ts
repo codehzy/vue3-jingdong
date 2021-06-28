@@ -12,6 +12,10 @@ const routes: Array<RouteRecordRaw> = [
     path: "/login",
     name: "Login",
     component: Login,
+    beforeEnter: (to, from, next) => {
+      const isLogin = localStorage.isLogin;
+      isLogin ? next({ name: "Home" }) : next();
+    },
   },
   // {
   //   path: "/",
@@ -34,4 +38,16 @@ const router = createRouter({
   routes,
 });
 
+router.beforeEach((to, from, next) => {
+  // 验证Login,否则访问首页也自动跳转Login
+  const isLogin: boolean = localStorage.isLogin;
+  isLogin || to.name === "Login"
+    ? next()
+    : next({
+        name: "Login",
+      });
+
+  // console.log(to, from);
+  next();
+});
 export default router;
