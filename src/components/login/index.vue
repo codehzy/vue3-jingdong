@@ -28,9 +28,7 @@
 <script lang="ts">
 import { useRouter } from "vue-router";
 import { defineComponent, reactive } from "vue";
-import axios from "axios";
-
-axios.defaults.headers.post["Content-Type"] = "application/json";
+import Post from "../../utils/request";
 
 export default defineComponent({
   name: "Login",
@@ -42,24 +40,21 @@ export default defineComponent({
     });
     const router = useRouter();
     // Login调到Home
-    const handleLogin = () => {
-      axios
-        .post(
-          "https://www.fastmock.site/mock/db328b8fc6158bfc7ac1b07b12f87fcf/api/user/login",
-          {
-            username: data.username,
-            password: data.password,
-          },
-        )
-        .then(() => {
+    const handleLogin = async () => {
+      try {
+        const result:any = await Post("api/user/login", {
+          username: data.username,
+          password: data.password,
+        });
+        if (result?.errno === 0) {
           localStorage.isLogin = true;
           router.push({ name: "Home" });
-        })
-        .catch(() => {
-          alert("登陆失败");
-        });
-      // localStorage.isLogin = true;
-      // router.push({ name: "Home" });
+        } else {
+          alert("失败");
+        }
+      } catch (e) {
+        alert("请求失败");
+      }
     };
 
     // 跳转到注册页面
