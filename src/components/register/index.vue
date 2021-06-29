@@ -49,11 +49,11 @@ const useRegisterEffect = (showToast) => {
   });
 
   const handleRegister = async () => {
-    // 验证用户输入
-    if (data.username === "" || data.password === "") {
-      showToast("请输入用户名和密码");
-      return;
-    }
+    // TODO:验证用户输入
+    // if (data.username === "" || data.password === "") {
+    //   showToast("请输入用户名和密码");
+    //   return;
+    // }
 
     try {
       const result = await Post("/user/register", {

@@ -30,7 +30,7 @@
 <script>
 import { useRouter } from "vue-router";
 import { defineComponent, reactive, toRefs } from "vue";
-import Post from "../../utils/request";
+import { Post } from "../../utils/request";
 import Toast, { useToastEffect } from "../../components/Toast.vue";
 // import useToastEffect  from '../../components/Toast'
 

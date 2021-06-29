@@ -1,18 +1,26 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import Home from "../components/Home.vue";
-import Login from "../components/login/index.vue";
-import Register from "../components/register/index.vue";
+// import Home from "../components/Home.vue";
+// import Login from "../components/login/index.vue";
+// import Register from "../components/register/index.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "Home",
-    component: Home,
+    component: import(/* webpackChunkName: "home" */ "../components/Home.vue"),
+  },
+  {
+    path: "/shop/:id",
+    name: "Shop",
+    component: import(
+      /* webpackChunkName: "about" */ "../components/shop/index.vue"
+    ),
   },
   {
     path: "/register",
     name: "Register",
-    component: Register,
+    component: () =>
+      import(/* webpackChunkName: "login" */ "../components/shop/index.vue"),
     beforeEnter: (to, from, next) => {
       const isLogin = localStorage.isLogin;
       isLogin ? next({ name: "Home" }) : next();
@@ -21,7 +29,8 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/login",
     name: "Login",
-    component: Login,
+    component: () =>
+      import(/* webpackChunkName: "login" */ "../components/login/index.vue"),
     beforeEnter: (to, from, next) => {
       const isLogin = localStorage.isLogin;
       isLogin ? next({ name: "Home" }) : next();

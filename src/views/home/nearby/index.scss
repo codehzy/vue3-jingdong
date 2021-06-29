@@ -6,6 +6,9 @@
     font-weight: normal;
     color: $content-fontcolor;
   }
+  a {
+    text-decoration: none;
+  }
   &__item {
     display: flex;
     padding-top: 0.12rem;
