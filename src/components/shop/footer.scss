@@ -1,0 +1,48 @@
+@import "../../style/viriables";
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  height: 0.5rem;
+  width: 100%;
+  background: $search-bgColor;
+  margin-left: -0.18rem;
+  //text-align: center;
+  &__icon {
+    display: block;
+    position: absolute;
+    margin: 0.11rem 0.32rem 0.12rem 0.24rem;
+    font-size: 0.26rem;
+    color: $basketColor;
+    font-weight: bold;
+  }
+  &__pay {
+    position: absolute;
+    width: 0.98rem;
+    height: 0.5rem;
+    background: $pay-bgColor;
+    right: 0;
+    &__text {
+      line-height: 0.5rem;
+      text-align: center;
+      font-size: 0.14rem;
+      color: $bgColor;
+    }
+  }
+  &__totalPrice {
+    display: flex;
+    align-items: flex-end;
+    position: absolute;
+    line-height: 0.5rem;
+    margin-left: 0.84rem;
+    &__title {
+      font-size: 0.12rem;
+      color: $content-fontcolor;
+    }
+    &__text {
+      font-size: 0.18rem;
+      color: $payText;
+      font-weight: bold;
+    }
+  }
+}
