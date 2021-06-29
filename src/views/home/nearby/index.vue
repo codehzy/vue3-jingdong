@@ -11,7 +11,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent, ref } from "vue";
 import { Get } from "../../../utils/request";
 import ShopInfo from "../../../components/ShopInfo.vue";

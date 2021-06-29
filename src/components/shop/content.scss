@@ -1,0 +1,101 @@
+@import "../../style/viriables";
+@import "../../style/mixins";
+
+.content {
+  display: flex;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 1.5rem;
+  bottom: 0.5rem;
+}
+
+.category {
+  width: 0.76rem;
+  background-color: $search-bgColor;
+  height: 100%;
+  overflow-y: scroll;
+  &__item {
+    line-height: 0.4rem;
+    text-align: center;
+    &--active {
+      background: $bgColor;
+      font-size: 0.14rem;
+      color: $content-fontcolor;
+    }
+  }
+}
+
+.product {
+  overflow-y: scroll;
+  flex: 1;
+  &__item {
+    position: relative;
+    display: flex;
+    padding: 0.12rem 0;
+    margin: 0 0.16rem;
+    border-bottom: 0.01rem solid $content-bgColor;
+    &__img {
+      width: 0.68rem;
+      height: 0.68rem;
+      margin-right: 0.16rem;
+    }
+    &__detail {
+      overflow: hidden;
+      &__title {
+        margin: 0;
+        line-height: 0.2rem;
+        font-size: 0.14rem;
+        color: $content-fontcolor;
+        @include ellipsis;
+      }
+      &__sales {
+        margin: 0.06rem 0;
+        font-size: 0.12rem;
+        color: $content-fontcolor;
+      }
+      &__price {
+        margin: 0;
+        line-height: 0.2rem;
+        font-size: 0.14rem;
+        color: #e93b3b;
+      }
+      &__yen {
+        font-size: 0.12rem;
+      }
+      &__origin {
+        margin-left: 0.06rem;
+        line-height: 0.2rem;
+        font-size: 0.12rem;
+        color: $light-fontColor;
+        text-decoration: line-through;
+      }
+    }
+    &__number {
+      position: absolute;
+      right: 0;
+      bottom: 0.12rem;
+      &__minus,
+      &__plus {
+        display: inline-block;
+        width: 0.2rem;
+        height: 0.2rem;
+        line-height: 0.16rem;
+        border-radius: 50%;
+        font-size: 0.2rem;
+        text-align: center;
+      }
+      &__minus {
+        border: 0.01rem solid $medium-fontColor;
+        color: $medium-fontColor;
+        margin-right: 0.05rem;
+      }
+      &__plus {
+        border: 0.01rem solid $btn-bgColor;
+        background: $btn-bgColor;
+        color: $bgColor;
+        margin-left: 0.05rem;
+      }
+    }
+  }
+}
