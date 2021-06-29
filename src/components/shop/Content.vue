@@ -2,32 +2,19 @@
 <template>
   <div class="content">
     <div class="category">
-      <div class="category__item category__item--active">全部商品</div>
-      <div class="category__item">秒杀</div>
-      <div class="category__item">新鲜水果</div>
-      <div class="category__item">休闲食品</div>
-      <div class="category__item">时令蔬菜</div>
-      <div class="category__item">肉蛋家禽</div>
-      <div class="category__item">秒杀</div>
-      <div class="category__item">新鲜水果</div>
-      <div class="category__item">休闲食品</div>
-      <div class="category__item">时令蔬菜</div>
-      <div class="category__item">肉蛋家禽</div>
-      <div class="category__item">秒杀</div>
-      <div class="category__item">新鲜水果</div>
-      <div class="category__item">休闲食品</div>
-      <div class="category__item">时令蔬菜</div>
-      <div class="category__item">肉蛋家禽</div>
+      <div :class="{'category__item':true,'category__item--active': currentTab === item.tab}" v-for="item in categories" :key="item._id"
+           @click="() => handleCategoryClick(item.tab)">{{ item.name }}
+      </div>
     </div>
     <div class="product">
-      <div class="product__item">
+      <div class="product__item" v-for="item in contentList" :key="item._id">
         <img class="product__item__img" src="http://www.dell-lee.com/imgs/vue3/near.png" alt="">
         <div class="product__item__detail">
-          <h4 class="product__item__detail__title">番茄250g/份</h4>
-          <p class="product__item__detail__sales">月售10件</p>
+          <h4 class="product__item__detail__title">{{ item.name }}</h4>
+          <p class="product__item__detail__sales">月售 {{ item.sales }}</p>
           <p class="product__item__detail__price">
-            <span class="product__item__detail__yen">&yen;</span>33.6
-            <span class="product__item__detail__origin">&yen;66.6</span>
+            <span class="product__item__detail__yen">&yen;</span>{{ item.price }}
+            <span class="product__item__detail__origin">&yen;{{ item.oldPrice }}</span>
           </p>
         </div>
         <div class="product__item__number">
@@ -39,12 +26,51 @@
     </div>
   </div>
 </template>
-<script lang="ts">
-import { defineComponent } from "vue";
+<script>
+import { defineComponent, reactive, toRefs } from "vue";
+import { Get } from "../../utils/request";
 
 export default defineComponent({
-  name: ""
-  //   setup: () => {},
+  name: "Content",
+  setup: () => {
+    const categories = [
+      {
+        name: "全部商品",
+        tab: "all"
+      },
+      {
+        name: "秒杀",
+        tab: "seckill"
+      },
+      {
+        name: "新鲜水果",
+        tab: "fruit"
+      }
+    ];
+    const data = reactive({
+      currentTab: categories[0].tab,
+      contentList: []
+    });
+
+    // 获取商品列表数据
+    const getContentData = async (tab) => {
+      const result = await Get("shop/1/products", { tab });
+      if (result?.errno === 0 && result?.data?.length) {
+        data.contentList = result.data;
+      }
+    };
+
+    // 点击重新获取数据并且传递tab
+    const handleCategoryClick = (tab) => {
+      getContentData(tab);
+      // 选中tab将其根据tab名变白
+      data.currentTab = tab;
+    };
+
+    getContentData("all");
+    const { contentList,currentTab } = toRefs(data);
+    return { contentList, categories,currentTab, handleCategoryClick };
+  }
 });
 </script>
 <style lang="sass" scoped>
